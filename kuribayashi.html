@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+  #text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #text span {
+    display: inline-block;
+    font-size: 30rem;
+    font-weight: bold;
+    animation: amnime01 1s ease;
+  }
+  @keyframes amnime01 {
+    0% {transform: translateY(0px) rotateY(1,1,1,90deg);}
+    50% {transform: translateY(-100px) rotateY(1,1,1,0deg);}
+    100% {transform: translateY(0px) rotateY(1,1,1,-90deg);}
+  }
+
+  </style>
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="text"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+
+    const textElem = document.getElementById('text');
+    let count = 0;
+
+    function func01() {
+      count++;
+
+      // ここで新たに要素を作成してる
+      const spanElem = document.createElement('span');
+
+      spanElem.textContent = count;
+
+      //ここでhtml上の#text要素の中身を置き換えている
+      $(textElem).html(spanElem);
+
+      setTimeout(func01,1000);
+    };
+
+    func01();
+
+  </script>
+</body>
+</html>
