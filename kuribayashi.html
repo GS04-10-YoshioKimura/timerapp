@@ -1,55 +1,140 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <style>
-  #text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #text span {
-    display: inline-block;
-    font-size: 30rem;
-    font-weight: bold;
-    animation: amnime01 1s ease;
-  }
-  @keyframes amnime01 {
-    0% {transform: translateY(0px) rotateY(1,1,1,90deg);}
-    50% {transform: translateY(-100px) rotateY(1,1,1,0deg);}
-    100% {transform: translateY(0px) rotateY(1,1,1,-90deg);}
-  }
-
-  </style>
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>アプリ</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="timer.css">
+    <style>
+        #TimeLeft span {
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: bold;
+            animation: amnime01 1s ease;
+        }
+        
+        #TimeLeft span.test {
+            transform: rotateY(90deg);
+            animation: none;
+        }
+        
+        @keyframes amnime01 {
+            0% {
+                transform: translateY(0px) rotateY(90deg);
+            }
+            50% {
+                transform: translateY(-10px) rotateY(0deg);
+            }
+            100% {
+                transform: translateY(0px) rotateY(-90deg);
+            }
+        }
+    </style>
 </head>
-<body>
 
-  <div id="text"></div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script>
+<body> 
+   <img src="olympic_n_150.gif" alt="">
+    <div class="timer"> </div>
+    <div class="Timer">
+        <p>オリンピック開始まで</p>
+        <div id="TimeLeft"></div>
+    </div>
+    
 
-    const textElem = document.getElementById('text');
-    let count = 0;
+    <script>
+        $(function () {
+            var d1 = 0
+                , d2 = 0
+                , d3 = 0
+                , h1 = 0
+                , h2 = 0
+                , m1 = 0
+                , m2 = 0
+                , s1 = 0
+                , s2 = 0;
+            $("#TimeLeft").html(`あと
+    <span id="d1Elem">${d1}</span>
+    <span id="d2Elem">${d2}</span>
+    <span id="d3Elem">${d3}</span>日
+    <span id="h1Elem">${h1}</span>
+    <span id="h2Elem">${h2}</span>時間
+    <span id="m1Elem">${m1}</span>
+    <span id="m2Elem">${m2}</span>分
+    <span id="s1Elem">${s1}</span>
+    <span id="s2Elem">${s2}</span>秒`);
 
-    function func01() {
-      count++;
-
-      // ここで新たに要素を作成してる
-      const spanElem = document.createElement('span');
-
-      spanElem.textContent = count;
-
-      //ここでhtml上の#text要素の中身を置き換えている
-      $(textElem).html(spanElem);
-
-      setTimeout(func01,1000);
-    };
-
-    func01();
-
-  </script>
+            function countDown() {
+                var startDateTime = new Date();
+                var endDateTime = new Date("January 1, 2020 00:00:00");
+                var left = endDateTime - startDateTime;
+                var a_day = 24 * 60 * 60 * 1000;
+                var a_year = 365 * 24 * 60 * 60 * 1000;
+                var n_d = addZero(Math.floor((left % a_year) / (24 * 60 * 60 * 1000)), 3);
+                var n_d1 = n_d.charAt(0);
+                var n_d2 = n_d.charAt(1);
+                var n_d3 = n_d.charAt(2);
+                var n_h = addZero(Math.floor((left % a_day) / (60 * 60 * 1000)));
+                var n_h1 = n_h.charAt(0);
+                var n_h2 = n_h.charAt(1);
+                var n_m = addZero(Math.floor((left % a_day) / (60 * 1000)) % 60);
+                var n_m1 = n_m.charAt(0);
+                var n_m2 = n_m.charAt(1);
+                var n_s = addZero(Math.floor((left % a_day) / 1000) % 60 % 60);
+                var n_s1 = n_s.charAt(0);
+                var n_s2 = n_s.charAt(1);
+                
+                if (d1 != n_d1) {
+                    $('#d1Elem').text(n_d1).addClass('test');
+                }
+                if (d2 != n_d2) {
+                    $('#d2Elem').text(n_d2).addClass('test');
+                }
+                if (d3 != n_d3) {
+                    $('#d3Elem').text(n_d3).addClass('test');
+                }
+                if (h1 != n_h1) {
+                    $('#h1Elem').text(n_h1).addClass('test');
+                }
+                if (h2 != n_h2) {
+                    $('#h2Elem').text(n_h2).addClass('test');
+                }
+                if (m1 != n_m1) {
+                    $('#m1Elem').text(n_m1).addClass('test');
+                }
+                if (m2 != n_m2) {
+                    $('#m2Elem').text(n_m2).addClass('test');
+                }
+                if (s1 != n_s1) {
+                    $('#s1Elem').text(n_s1).addClass('test');
+                }
+                if (s2 != n_s2) {
+                    $('#s2Elem').text(n_s2).addClass('test');
+                }
+                d1 = n_d1;
+                d2 = n_d2;
+                d3 = n_d3;
+                h1 = n_h1;
+                h2 = n_h2;
+                m1 = n_m1;
+                m2 = n_m2;
+                s1 = n_s1;
+                s2 = n_s2;
+                
+                setTimeout(function () {
+                    $("#TimeLeft span").removeClass('test');
+                }, 100);
+                setTimeout(countDown, 1000);
+            }
+             countDown();
+            // ゼロを埋める関数。第二引数に何も渡さない場合は２桁
+            function addZero(x, y = 2) {
+                return ("0" + x).slice(-y);
+            }
+        });
+    </script>
 </body>
+
 </html>

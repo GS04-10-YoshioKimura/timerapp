@@ -1,37 +1,65 @@
-body{
-  text-align: center;
+span {
+    color: green;
 }
 
-span{
- color: green;
+#TimeLeft {
+    padding-bottom: 30px;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+    font-size: 100%;
+    margin: 0;
+    padding: 1.75em;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+h1 {
+    font-size: 1.75em;
+    margin: 0 0 0.6em 0;
+}
+
+h2 {
+    font-size: 1.25em;
+    margin: 0 0 0.6em 0;
+}
+
+a {
+    color: #2996cc;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+p {
+    line-height: 1.5em;
+}
+
+.small {
+    color: #666;
+    font-size: 0.875em;
+}
+
+.large {
+    font-size: 1.25em;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"] {
+    margin: 0.5em 0 3em 0;
+    padding: 0.5em;
 }
 
 
-#TimeLeft{
-  padding-bottom: 30px;
-}
-
-
-html { margin: 0; padding: 0; }
-    body { font-size: 100%; margin: 0; padding: 1.75em; font-family: 'Helvetica Neue', Arial, sans-serif; }
-
-    h1 { font-size: 1.75em; margin: 0 0 0.6em 0; }
-    h2 { font-size: 1.25em; margin: 0 0 0.6em 0; }
-
-    a { color: #2996cc; }
-    a:hover { text-decoration: none; }
-
-    p { line-height: 1.5em; }
-    .small { color: #666; font-size: 0.875em; }
-    .large { font-size: 1.25em; }
-
-    label {
-        font-weight: bold;
-    }
-    input[type="text"] {
-        margin: 0.5em 0 3em 0;
-        padding: 0.5em;
-}
 /*!
  * Pikaday
  * Copyright © 2012 David Bushell | BSD & MIT license | http://dbushell.com/
@@ -56,7 +84,7 @@ html { margin: 0; padding: 0; }
 
 .pika-single.is-bound {
     position: absolute;
-    box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, .5);
 }
 
 .pika-title {
@@ -77,6 +105,7 @@ html { margin: 0; padding: 0; }
     font-weight: bold;
     background-color: #fff;
 }
+
 .pika-title select {
     cursor: pointer;
     position: absolute;
